@@ -34,10 +34,18 @@ var work = {
 var projects = {
 	"udacity": [
 		{
-			"title": "Front-End Web Development Nanodegree",
+			"title": "Bootstrap first project",
 			"dates": 2014,
-			"description": "Took part of Udacity's Nanodegree - completing various project during the course",
-			"url": ["https://github.com/jordan23jy?tab=repositories"]
+			"description": "First attempt using bootstrap to build a website",
+			"images": ["http://placehold.it/300x150", "http://placehold.it/300x150"],
+			"url": ["https://github.com/jordan23jy/bootstrap_projects"]
+		},
+		{
+			"title": "Portfolio Mockup",
+			"dates": 2014,
+			"description": "First project on Udicaty Front-End Nanodegree",
+			"images": ["http://placehold.it/300x150", "http://placehold.it/300x150"],
+			"url": ["https://github.com/jordan23jy/project_1/blob/master/index.html"]
 		}
 	]
 }
@@ -93,10 +101,6 @@ function displayBio() {
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 	var formattedBio = formattedName + formattedRole
 	$("#header").prepend(formattedBio);
-
-	
-	
-
 	
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
@@ -108,12 +112,10 @@ function displayBio() {
 	$("#header").append(formattedImage);
 
 	var formattedWelcomeMsg = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-	var formattedSkillsStart = HTMLskillsStart;
-	
+	var formattedSkillsStart = HTMLskillsStart;	
 	$("#header").append(formattedWelcomeMsg + formattedSkillsStart);
 
 	for (skill in bio.skills) {
-		
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
 		$("#header").append(formattedSkills);
 	}
@@ -141,6 +143,37 @@ function displayWork() {
 
 displayWork();
 
+/*"title"
+"dates"
+"descri
+"url": 
+*/
+
+projects.display = function() {
+	for (project in projects.udacity) {
+		$("#projects").append(HTMLprojectStart);
+
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.udacity[project].title);
+		$(".project-entry:last").append(formattedTitle);
+
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.udacity[project].dates);
+		$(".project-entry:last").append(formattedDates);
+
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.udacity[project].description);
+		$(".project-entry:last").append(formattedDescription);
+
+		if (projects.udacity[project].images.length > 0) {
+			for (image in projects.udacity[project].images) {
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.udacity[project].images[image]);
+			$(".project-entry:last").append(formattedImage);
+			}
+		}			
+	}
+};
+
+projects.display();
+
+
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
@@ -161,6 +194,9 @@ function locationizer(work_obj) {
 
 
 
+
+
+
 function inName(name) {
 	name = name.trim().split(" ");
 	console.log(name);
@@ -169,5 +205,7 @@ function inName(name) {
 
 	return name[0] + " " + name[1];
 }
-
 $("#main").append(internationalizeButton);
+
+
+
