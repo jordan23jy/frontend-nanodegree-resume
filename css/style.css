@@ -84,6 +84,8 @@ a {
   font-size: 18px;
   color: #F3F3F3;
   line-height: 28px;
+  flex-direction: row;
+  display: flex;
 }
 
 #skillsH3 {
