@@ -160,7 +160,18 @@ function initializeMap() {
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
-      title: name
+      title: name,
+      animation: google.maps.Animation.DROP
+    });
+
+    //google pin animation
+    google.maps.event.addListener(marker, 'click', function(){
+      if(marker.getAnimation() !== null){
+        marker.setAnimation(null);
+      }
+      else{
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
     });
 
     // infoWindows are the little helper windows that open when you click
@@ -240,7 +251,7 @@ window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});

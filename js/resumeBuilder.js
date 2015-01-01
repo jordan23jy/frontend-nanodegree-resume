@@ -48,7 +48,7 @@ var education = {
 	"schools": [
 		{
 			"name": "Sinaran Institute",
-			"location": "Kota Kinabalu",
+			"location": "Kota Kinabalu, Malaysia",
 			"degree": "Science",
 			"major": ["Physics", "Mathematics"],
 			"dates": "2009",
@@ -56,11 +56,18 @@ var education = {
 		},
 		{
 			"name": "Univeristy of Nottingham",
-			"location": "Kuala Lumpur",
+			"location": "Kuala Lumpur, Malaysia",
 			"degree": "BEng Civil Engineering",
 			"major": ["Civil Engineering"],
 			"dates": "2013",
-			"url": "http://www.nottingham.edu.my"
+			"url": "http://www.nottingham.edu.my/"
+		},
+		{
+			"name": "Fullbridge Program",
+			"location": "Boston, United States",
+			"degree": "Immersive Business Program",
+			"dates": "2013",
+			"url": "http://www.fullbridge.com/"
 		}
 	],
 
@@ -176,15 +183,21 @@ var projects = {
 		{
 			"title": "Bootstrap first project",
 			"dates": 2014,
-			"description": "First attempt using bootstrap to build a website",
-			"images": ["http://placehold.it/300x150", "http://placehold.it/300x150"],
+			"description": "Developed a responsive website using Twitter Bootstrap front-end framework",
+			"images": [
+				"http://www.placehold.it/350x250",
+				"http://www.placehold.it/350x250"
+				],
 			"url": ["https://github.com/jordan23jy/bootstrap_projects"]
 		},
 		{
 			"title": "Portfolio Mockup",
 			"dates": 2014,
-			"description": "First project on Udicaty Front-End Nanodegree",
-			"images": ["http://placehold.it/300x150", "http://placehold.it/300x150"],
+			"description": "First project on Udicaty Front-End Nanodegree. Developed a responsive website with HTML and CSS with provided PDF mockup design",
+			"images": [
+				"http://www.placehold.it/350x250",
+				"http://www.placehold.it/350x250"
+				],
 			"url": ["https://github.com/jordan23jy/project_1/blob/master/index.html"]
 		}
 	]
@@ -203,19 +216,17 @@ projects.display = function() {
 		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.udacity[project].description);
 		$(".project-entry:last").append(formattedDescription);
 
+		
 		if (projects.udacity[project].images.length > 0) {
 			for (var image in projects.udacity[project].images) {
 				var formattedImage = HTMLprojectImage.replace("%data%", projects.udacity[project].images[image]);
 				$(".project-entry:last").append(formattedImage);
 			}
 		}
+		
+
 	}
 };
-
-
-
-//map
-$("#mapDiv").append(googleMap);
 
 function locationizer(work_obj) {
 	var locationArray = [];
@@ -236,7 +247,7 @@ function inName(name) {
 	return name[0] + " " + name[1];
 }
 $("#main").append(internationalizeButton);
-
+$("#mapDiv").append(googleMap);
 bio.display();
 work.display();
 projects.display();
