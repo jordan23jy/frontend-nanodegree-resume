@@ -1,4 +1,4 @@
-Link to this project >>>> http://projects.jordanyong.com/frontend-nanodegree-resume
+Project can be reviewed at http://blog.jordanyong.com/projects/
 
 
 ## How do I complete this project?
